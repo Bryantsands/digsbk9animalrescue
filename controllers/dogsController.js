@@ -1,10 +1,9 @@
 var express = require("express");
-
 var router = express.Router();
 var dog = require("../models/dog.js");
 
 // get route -> index
-router.get("/", function(req, res) {
+router.get("/admin", function(req, res) {
   res.redirect("/dogs");
 });
 
@@ -12,18 +11,19 @@ router.get("/dogs", function(req, res) {
   // express callback response by calling dog.selectAllDog
   dog.all(function(dogData) {
     // wrapper for orm.js that using MySQL query callback will return dog_data, render to index with handlebar
-    res.render("index", { dog_data: dogData });
+    res.render("admin", { dog_data: dogData });
   });
 });
 
 // post route -> back to index
 router.post("/dogs/create", function(req, res) {
   // takes the request object using it as input for dog.addDog
-  dog.create(req.body.dog_name, function(result) {
+  dog.create(req.body.dog_name, function(result){
+    
     // wrapper for orm.js that using MySQL insert callback will return a log to console,
     // render back to index with handle
     console.log(result);
-    res.redirect("/");
+    res.redirect("/admin");
   });
 });
 
@@ -33,8 +33,22 @@ router.put("/dogs/update", function(req, res) {
     // wrapper for orm.js that using MySQL update callback will return a log to console,
     // render back to index with handle
     console.log(result);
-    res.redirect("/");
+    res.redirect("/admin");
   });
 });
+  
+  router.get("/index", function(req, res){
+    res.render("index");
+  });
+
+  router.get("/boardMembers", function(req, res){
+    res.render("boardMembers");
+  });
+
+  router.get("/adopt", function(req, res){
+    res.render("adopt");
+  });
+  
+  
 
 module.exports = router;
