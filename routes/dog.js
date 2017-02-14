@@ -1,15 +1,24 @@
-var db = require("../models");
+var orm = require("../config/orm.js");
 
-module.exports = function(app) {
-    app.get("admin", function (req, res){
-        res.render("admin");
-    });
+var dog = {
+    all: function(cb){
+        orm.all("dogs", function(res){
+            cb(res);
+        });
+    },
+    create: function(name, cb){
+        orm.create("dogs",[
+            "dog_name", "unavailable"
+        ],[
+            name,false
+        ], cb);
+    },
+    update: function(id, cb){
+        var condition = "id=" + id;
+        orm.update("dogs", {
+            unavailable: true
+        }, condition, cb);
+    }
+};
 
-    app.get("/admin/:id", function(req, res){
-        db.dogs.findOne({
-            where:{
-                id:req.params.id
-            },
-        })
-    })
-}
+module.exports = dog;
