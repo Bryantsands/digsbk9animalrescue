@@ -48,6 +48,10 @@ router.put("/dogs/update", function(req, res) {
   router.get("/adopt", function(req, res){
     res.render("adopt");
   });
+  //get route for programs
+  router.get("/programs", function(req, res){
+    res.render("programs");
+  });
   
   
 
