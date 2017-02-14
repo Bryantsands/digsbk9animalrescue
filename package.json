@@ -1,0 +1,29 @@
+{
+  "name": "digsbk9animalrescue",
+  "version": "1.0.0",
+  "description": "Animal rescue for digsbk9animalrescue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bryantsands/digsbk9animalrescue.git"
+  },
+  "author": "Bryant Sands",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bryantsands/digsbk9animalrescue/issues"
+  },
+  "homepage": "https://github.com/Bryantsands/digsbk9animalrescue#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "materialize-css": "^0.98.0",
+    "method-override": "^2.3.7",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}
